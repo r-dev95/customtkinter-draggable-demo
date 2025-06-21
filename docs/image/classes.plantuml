@@ -1,0 +1,120 @@
+@startuml classes
+!define MAIN_CLASS_COLOR #a8c9ea
+
+set namespaceSeparator none
+class "app.App" as app.App MAIN_CLASS_COLOR {
+  event_bus
+}
+class "customtkinter.windows.ctk_tk.CTk" as customtkinter.windows.ctk_tk.CTk {
+  focused_widget_before_widthdraw : NoneType
+  block_update_dimensions_event()
+  cget(attribute_name: str) -> any
+  configure()
+  destroy()
+  geometry(geometry_string: str)
+  iconbitmap(bitmap, default)
+  iconify()
+  mainloop()
+  maxsize(width: Optional[int], height: Optional[int])
+  minsize(width: Optional[int], height: Optional[int])
+  resizable(width: bool, height: bool)
+  unblock_update_dimensions_event()
+  update()
+  withdraw()
+  wm_iconbitmap(bitmap, default)
+}
+class "customtkinter.windows.widgets.appearance_mode.appearance_mode_base_class.CTkAppearanceModeBaseClass" as customtkinter.windows.widgets.appearance_mode.appearance_mode_base_class.CTkAppearanceModeBaseClass {
+  destroy()
+}
+class "customtkinter.windows.widgets.core_widget_classes.ctk_base_class.CTkBaseClass" as customtkinter.windows.widgets.core_widget_classes.ctk_base_class.CTkBaseClass {
+  {abstract}bind(sequence, command, add)
+  bind_all(sequence, func, add)
+  cget(attribute_name: str)
+  config()
+  configure(require_redraw)
+  destroy()
+  grid()
+  grid_forget()
+  pack()
+  pack_forget()
+  place()
+  place_forget()
+  {abstract}unbind(sequence, funcid)
+  unbind_all(sequence)
+}
+class "customtkinter.windows.widgets.ctk_frame.CTkFrame" as customtkinter.windows.widgets.ctk_frame.CTkFrame {
+  bind(sequence, command, add)
+  cget(attribute_name: str) -> any
+  configure(require_redraw)
+  unbind(sequence, funcid)
+  winfo_children() -> List[any]
+}
+class "customtkinter.windows.widgets.ctk_scrollable_frame.CTkScrollableFrame" as customtkinter.windows.widgets.ctk_scrollable_frame.CTkScrollableFrame {
+  cget(attribute_name: str)
+  check_if_master_is_canvas(widget)
+  configure()
+  destroy()
+  grid()
+  grid_forget()
+  grid_info()
+  grid_propagate()
+  grid_remove()
+  lift(aboveThis)
+  lower(belowThis)
+  pack()
+  pack_forget()
+  place()
+  place_forget()
+}
+class "customtkinter.windows.widgets.scaling.scaling_base_class.CTkScalingBaseClass" as customtkinter.windows.widgets.scaling.scaling_base_class.CTkScalingBaseClass {
+  destroy()
+}
+class "lib.components.base.BaseComponent" as lib.components.base.BaseComponent MAIN_CLASS_COLOR {
+  event_bus
+  {abstract}register_events() -> dict[str, Callable]
+}
+class "lib.components.base.BasePage" as lib.components.base.BasePage MAIN_CLASS_COLOR {
+}
+class "lib.components.base.EventBus" as lib.components.base.EventBus MAIN_CLASS_COLOR {
+  listeners : dict[str, list[Callable]]
+  emit(event_name: str) -> None
+  subscribe(event_name: str, callback: Callable) -> None
+}
+class "lib.components.card.DraggableCard" as lib.components.card.DraggableCard MAIN_CLASS_COLOR {
+  default_fg_color
+  drop_item_y : int
+  index : int
+  label : CTkLabel
+  bind_all_children(widget: ctk.CTkBaseClass, sequence: str, command: Callable) -> None
+  on_click(_: Event) -> None
+  on_drag(event: Event) -> None
+  on_release(event: Event) -> None
+  register_events() -> dict[str, Callable]
+  set_cursor_all_children(widget: ctk.CTkBaseClass, cursor: str) -> None
+}
+class "lib.components.card.DraggableCardParentFrame" as lib.components.card.DraggableCardParentFrame MAIN_CLASS_COLOR {
+  cards : list[DraggableCard]
+  page_name : str
+  add_card() -> None
+  on_reorder(drag_idx: int, drop_item_y: int) -> None
+  register_events() -> dict[str, Callable]
+  render() -> None
+}
+app.App --|> customtkinter.windows.ctk_tk.CTk
+customtkinter.windows.ctk_tk.CTk --|> customtkinter.windows.widgets.appearance_mode.appearance_mode_base_class.CTkAppearanceModeBaseClass
+customtkinter.windows.ctk_tk.CTk --|> customtkinter.windows.widgets.scaling.scaling_base_class.CTkScalingBaseClass
+customtkinter.windows.widgets.core_widget_classes.ctk_base_class.CTkBaseClass --|> customtkinter.windows.widgets.appearance_mode.appearance_mode_base_class.CTkAppearanceModeBaseClass
+customtkinter.windows.widgets.core_widget_classes.ctk_base_class.CTkBaseClass --|> customtkinter.windows.widgets.scaling.scaling_base_class.CTkScalingBaseClass
+customtkinter.windows.widgets.ctk_frame.CTkFrame --|> customtkinter.windows.widgets.core_widget_classes.ctk_base_class.CTkBaseClass
+customtkinter.windows.widgets.ctk_scrollable_frame.CTkScrollableFrame --|> customtkinter.windows.widgets.appearance_mode.appearance_mode_base_class.CTkAppearanceModeBaseClass
+customtkinter.windows.widgets.ctk_scrollable_frame.CTkScrollableFrame --|> customtkinter.windows.widgets.scaling.scaling_base_class.CTkScalingBaseClass
+lib.components.base.BasePage --|> customtkinter.windows.widgets.ctk_scrollable_frame.CTkScrollableFrame
+lib.components.base.BasePage --|> lib.components.base.BaseComponent
+lib.components.card.DraggableCard --|> customtkinter.windows.widgets.ctk_frame.CTkFrame
+lib.components.card.DraggableCard --|> lib.components.base.BaseComponent
+lib.components.card.DraggableCardParentFrame --|> lib.components.base.BasePage
+customtkinter.windows.ctk_tk.CTk --* customtkinter.windows.ctk_tk.CTk : focused_widget_before_widthdraw
+customtkinter.windows.widgets.ctk_frame.CTkFrame --* customtkinter.windows.widgets.ctk_scrollable_frame.CTkScrollableFrame : _parent_frame
+lib.components.base.EventBus --* app.App : event_bus
+lib.components.base.EventBus --o lib.components.base.BaseComponent : event_bus
+@enduml
