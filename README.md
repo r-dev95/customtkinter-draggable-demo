@@ -1,16 +1,18 @@
-<!--
-    README
- -->
-
- <div align=center>
+<!-- ============================================================ -->
+<!-- Project Image -->
+<!-- ============================================================ -->
+<div align=center>
   <img
     src='docs/image/demo.gif'
-    alt='App Screen.'
-    width=300
+    alt='Project Image.'
+    width=500
   />
 </div>
 
-# Customtkinter Draggable Demo
+<!-- ============================================================ -->
+<!-- Overview -->
+<!-- ============================================================ -->
+# :book:Overview
 
 [![English](https://img.shields.io/badge/English-018EF5.svg?labelColor=d3d3d3&logo=readme)](./README.md)
 [![Japanese](https://img.shields.io/badge/Japanese-018EF5.svg?labelColor=d3d3d3&logo=readme)](./README_JA.md)
@@ -40,9 +42,17 @@ self.bind_all_children(
 
 Also, the `EventBus` class can execute functions according to event names, reducing the dependency between classes.
 
-## :rocket:Getting started
+<!-- ============================================================ -->
+<!-- Features -->
+<!-- ============================================================ -->
+<!-- ## :desktop_computer:Features -->
 
-### Install from github
+<!-- ============================================================ -->
+<!-- Usage -->
+<!-- ============================================================ -->
+## :keyboard:Usage
+
+### Install
 
 ```bash
 git clone https://github.com/r-dev95/customtkinter-draggable-demo.git
@@ -50,9 +60,9 @@ git clone https://github.com/r-dev95/customtkinter-draggable-demo.git
 
 ### Build virtual environment
 
-It is assumed that `uv` is installed.
+You need to install `uv`.
 
-If you don't have a Python development environment yet, click [here](https://github.com/r-dev95/env-python).
+If you don't have a python development environment yet, see [here](https://github.com/r-dev95/env-python).
 
 ```bash
 cd customtkinter-draggable-demo/
@@ -62,11 +72,13 @@ uv sync
 ### Run
 
 ```bash
-source .venv/bin/activate
 cd src
-python app.py
+uv run python app.py
 ```
 
+<!-- ============================================================ -->
+<!-- Structure -->
+<!-- ============================================================ -->
 ## :bookmark_tabs:Structure
 
 <div align=center>
@@ -76,6 +88,9 @@ python app.py
   />
 </div>
 
+<!-- ============================================================ -->
+<!-- License -->
+<!-- ============================================================ -->
 ## :key:License
 
 This repository is licensed under the [MIT License](LICENSE).
