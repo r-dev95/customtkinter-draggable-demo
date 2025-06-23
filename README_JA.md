@@ -1,16 +1,18 @@
-<!--
-    README
- -->
-
- <div align=center>
+<!-- ============================================================ -->
+<!-- Project Image -->
+<!-- ============================================================ -->
+<div align=center>
   <img
     src='docs/image/demo.gif'
-    alt='App Screen.'
-    width=300
+    alt='Project Image.'
+    width=500
   />
 </div>
 
-# Customtkinter Draggable Demo
+<!-- ============================================================ -->
+<!-- Overview -->
+<!-- ============================================================ -->
+# :book:Overview
 
 [![English](https://img.shields.io/badge/English-018EF5.svg?labelColor=d3d3d3&logo=readme)](./README.md)
 [![Japanese](https://img.shields.io/badge/Japanese-018EF5.svg?labelColor=d3d3d3&logo=readme)](./README_JA.md)
@@ -40,15 +42,23 @@ self.bind_all_children(
 
 また`EventBus`クラスでイベント名に応じた関数を実行できるようにすることで、クラス間の依存度を下げるような設計としています。
 
-## :rocket:Getting started
+<!-- ============================================================ -->
+<!-- Features -->
+<!-- ============================================================ -->
+<!-- ## :desktop_computer:Features -->
 
-### githubからインストール
+<!-- ============================================================ -->
+<!-- Usage -->
+<!-- ============================================================ -->
+## :keyboard:Usage
+
+### Install
 
 ```bash
 git clone https://github.com/r-dev95/customtkinter-draggable-demo.git
 ```
 
-### 仮想環境の構築
+### Build virtual environment
 
 `uv`がインストールされていることが前提です。
 
@@ -59,15 +69,17 @@ cd customtkinter-draggable-demo/
 uv sync
 ```
 
-### 実行
+### Run
 
 ```bash
-source .venv/bin/activate
 cd src
-python app.py
+uv run python app.py
 ```
 
-## :bookmark_tabs:構成
+<!-- ============================================================ -->
+<!-- Structure -->
+<!-- ============================================================ -->
+## :bookmark_tabs:Structure
 
 <div align=center>
   <img
@@ -76,6 +88,9 @@ python app.py
   />
 </div>
 
-## :key:ライセンス
+<!-- ============================================================ -->
+<!-- License -->
+<!-- ============================================================ -->
+## :key:License
 
 本リポジトリは、[MIT License](LICENSE)に基づいてライセンスされています。
